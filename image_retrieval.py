@@ -141,14 +141,23 @@ print("Fitting k-nearest-neighbour model on training images...")
 knn = NearestNeighbors(n_neighbors=5, metric="cosine")
 knn.fit(E_train_flatten)
 
+
+dim2_array=[]
 # Perform image retrieval on test images
 print("Performing image retrieval on test images...")
 for i, emb_flatten in enumerate(E_test_flatten):
-    _, indices = knn.kneighbors([emb_flatten]) # find k nearest train neighbours
+    dists, indices = knn.kneighbors([emb_flatten]) # find k nearest train neighbours
+    # print('dists: ',dists)
+    # print('indices: ',indices)
+    dim2_array.append(dists)
     img_query = imgs_test[i] # query image
     imgs_retrieval = [imgs_train[idx] for idx in indices.flatten()] # retrieval images
     outFile = os.path.join(outDir, "{}_retrieval_{}.png".format(modelName, i))
     plot_query_retrieval(img_query, imgs_retrieval, outFile)
+plt.title('TSM')
+plt.imshow(dim2_array, cmap='hot', interpolation='nearest')
+plt.savefig('TSM.png', dpi=300)
+
 
 # Plot t-SNE visualization
 print("Visualizing t-SNE on training images...")
