@@ -20,8 +20,8 @@ trainModel = True
 parallel = True  # use multicore processing
 
 # Make paths
-dataTrainDir = os.path.join(os.getcwd(), "data", "train")
-dataTestDir = os.path.join(os.getcwd(), "data", "test")
+dataTrainDir = os.path.join("/content/drive/MyDrive/swing_PBL/data","train")
+dataTestDir = os.path.join("/content/drive/MyDrive/swing_PBL/data", "test")
 outDir = os.path.join(os.getcwd(), "output", modelName)
 if not os.path.exists(outDir):
     os.makedirs(outDir)
@@ -32,6 +32,7 @@ print("Reading train images from '{}'...".format(dataTrainDir))
 imgs_train = read_imgs_dir(dataTrainDir, extensions, parallel=parallel)
 print("Reading test images from '{}'...".format(dataTestDir))
 imgs_test = read_imgs_dir(dataTestDir, extensions, parallel=parallel)
+# print(imgs_train)
 shape_img = imgs_train[0].shape
 print("Image shape = {}".format(shape_img))
 
