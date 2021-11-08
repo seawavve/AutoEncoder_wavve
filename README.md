@@ -9,4 +9,5 @@ test: 140장
 (위 origin, 아래 evaluation)
 ![](https://github.com/seawavve/AutoEncoder_wavve/blob/main/img/jumpingjack_eval.jpg)  
 - Similarity Result 🙆🏻  
+testset 사진하나를 보고, 그와 제일 similar한 이미지를 training에서 골라 rank로 보여줌
 ![](https://github.com/seawavve/AutoEncoder_wavve/blob/main/img/jumpingjack_similarity.jpg)  
